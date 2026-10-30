@@ -1,0 +1,178 @@
+.now-playing-bar {
+  flex: 1;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  min-width: 0;
+}
+
+/* --- Kiri: info track --- */
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 1 280px;
+  min-width: 0;
+}
+
+.track-artwork {
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.track-title {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.demo-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 1px;
+  color: var(--color-status-yellow);
+  border: 1px solid var(--color-status-yellow);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+
+/* --- Tengah: progress bar (demo, belum aktif) --- */
+.progress-section {
+  flex: 1 1 240px;
+  max-width: 640px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.55;
+}
+
+.progress-time {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--color-bg-elevated);
+  border-radius: 2px;
+  position: relative;
+}
+
+.progress-level {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-neon-cyan);
+  border-radius: 2px;
+}
+
+/* --- Kontrol player --- */
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+}
+
+.control-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border-radius: var(--radius-sm);
+}
+
+.control-btn:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+}
+
+.play-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--color-neon-cyan);
+  color: var(--color-bg-base);
+  border-radius: 50%;
+}
+
+.play-btn:hover:not(:disabled) {
+  background: var(--color-neon-violet);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.control-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.play-btn:disabled,
+.play-btn:disabled:hover {
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Kanan: volume --- */
+.volume-control {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 1 160px;
+  justify-content: flex-end;
+  color: var(--color-text-secondary);
+}
+
+.volume-slider {
+  width: 100px;
+  height: 4px;
+  background: var(--color-bg-elevated);
+  border-radius: 2px;
+  position: relative;
+}
+
+.volume-level {
+  height: 100%;
+  background: var(--color-neon-cyan);
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

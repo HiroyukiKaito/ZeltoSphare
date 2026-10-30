@@ -1,0 +1,54 @@
+@import './tokens.css';
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  overflow: hidden; /* Mencegah scrollbar body, scrollbar akan diatur per panel */
+  user-select: none; /* Tampilan desktop app, bukan web */
+}
+
+/* Scrollbar kustom gaya cyberpunk */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-cyan);
+}
+
+/* Utility classes dasar */
+.text-cyan { color: var(--color-neon-cyan); }
+.text-violet { color: var(--color-neon-violet); }
+.text-green { color: var(--color-status-green); }
+.font-display { font-family: var(--font-display); letter-spacing: 1px; }
+.font-mono { font-family: var(--font-mono); }

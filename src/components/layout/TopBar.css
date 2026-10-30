@@ -1,0 +1,99 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 1rem;
+  background: var(--color-bg-panel);
+  border-bottom: 1px solid var(--color-border);
+  -webkit-app-region: drag; /* Agar bisa drag window */
+}
+
+.top-bar-left,
+.top-bar-center,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 5px var(--color-neon-cyan));
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+  margin: 0;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px 12px;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-status-green);
+  box-shadow: 0 0 6px var(--color-status-green);
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.online {
+  background: var(--color-status-green);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-status-green);
+  letter-spacing: 0.5px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+  -webkit-app-region: no-drag;
+}
+
+.control {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: var(--radius-sm);
+}
+
+.control:hover {
+  background: var(--color-neon-violet);
+  border-color: var(--color-neon-violet);
+  color: #fff;
+}
+
+.control.close:hover {
+  background: var(--color-status-red);
+  border-color: var(--color-status-red);
+}

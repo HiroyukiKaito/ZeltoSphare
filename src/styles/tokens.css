@@ -1,0 +1,30 @@
+:root {
+  /* Warna Utama Tampilan */
+  --color-bg-base: #05070F;
+  --color-bg-panel: #0A1226;
+  --color-bg-elevated: #111A33;
+  
+  --color-neon-cyan: #00D4FF;
+  --color-neon-violet: #7B5CFF;
+  --color-status-green: #19FFB0;
+  --color-status-red: #FF3860;
+  --color-status-yellow: #FFD700;
+  
+  --color-border: #1B3A73;
+  --color-text-primary: #E2E8F0;
+  --color-text-secondary: #8A9BB5;
+  --color-text-muted: #4A5B7A;
+
+  /* TIPOGRAFI */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Chakra Petch', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* SPACING & RADIUS */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  --shadow-glow-cyan: 0 0 10px rgba(0, 212, 255, 0.3);
+  --shadow-glow-violet: 0 0 10px rgba(123, 92, 255, 0.3);
+}
