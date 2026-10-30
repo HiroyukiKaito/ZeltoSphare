@@ -17,26 +17,40 @@
 
 .main-content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
   overflow: auto;
 }
 
-.main-content h1 {
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-title {
   font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
   color: var(--color-text-primary);
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
-  margin-bottom: 1rem;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
+  margin: 0;
 }
 
-.main-content p {
-  color: var(--color-text-secondary);
+.page-subtitle {
   font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: 0.25rem 0 0;
 }
-
 /* ============================================================
    HALAMAN WELCOME (Legacy - bisa dihapus nanti)
    ============================================================ */

@@ -50,7 +50,7 @@ npm run tauri build
 ## Status Fase
 
 - [x] FASE 0 — Persiapan lingkungan dan keputusan teknis
-- [ ] FASE 1 — Desktop shell dan design system
+- [x] FASE 1 — Desktop shell dan design system
 - [ ] FASE 2 — Home dashboard dengan state jujur
 - [ ] FASE 3 — Python service dan persistence
 - [ ] FASE 4 — AI Chat dasar
