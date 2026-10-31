@@ -1,30 +1,66 @@
+/* ============================================================
+   ZELTO-SPHARE — DESIGN TOKENS
+   Sumber kebenaran: nexus7-all.css (ekspor variabel Figma).
+   Nama kanonik = nama variabel Figma; alias legacy dipertahankan
+   agar komponen existing tetap bekerja selama migrasi bertahap.
+   ============================================================ */
+
 :root {
-  /* Warna Utama Tampilan */
-  --color-bg-base: #05070F;
-  --color-bg-panel: #0A1226;
-  --color-bg-elevated: #111A33;
-  
-  --color-neon-cyan: #00D4FF;
-  --color-neon-violet: #7B5CFF;
-  --color-status-green: #19FFB0;
-  --color-status-red: #FF3860;
-  --color-status-yellow: #FFD700;
-  
-  --color-border: #1B3A73;
-  --color-text-primary: #E2E8F0;
-  --color-text-secondary: #8A9BB5;
-  --color-text-muted: #4A5B7A;
+  /* --- Warna kanonik (Figma) --- */
+  --color-bg: #05070f;
+  --color-panel: #0a1226;
+  --color-panel2: #101c3c;
+  --color-line: #1b3a73;
+  --color-neon: #00d4ff;
+  --color-blue: #2e7bff;
+  --color-violet: #7b5cff;
+  --color-pink: #ff3cac;
+  --color-green: #19ffb0;
+  --color-amber: #ffc24b;
+  --color-red: #ff4d6d;
+  --color-text: #e8f6ff;
+  --color-mute: #7f93b5;
 
-  /* TIPOGRAFI */
-  --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Chakra Petch', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* --- Alias legacy (komponen lama) --- */
+  --color-bg-base: var(--color-bg);
+  --color-bg-panel: var(--color-panel);
+  --color-bg-elevated: var(--color-panel2);
+  --color-border: var(--color-line);
+  --color-neon-cyan: var(--color-neon);
+  --color-neon-violet: var(--color-violet);
+  --color-status-green: var(--color-green);
+  --color-status-yellow: var(--color-amber);
+  --color-status-red: var(--color-red);
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: var(--color-mute);
+  --color-text-muted: rgba(127, 147, 181, 0.6);
 
-  /* SPACING & RADIUS */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  
-  --shadow-glow-cyan: 0 0 10px rgba(0, 212, 255, 0.3);
-  --shadow-glow-violet: 0 0 10px rgba(123, 92, 255, 0.3);
+  /* --- Tipografi (weight persis Figma) --- */
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Chakra Petch", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* --- Radius (Figma: chip 6-8, kontrol 10-12, panel 14) --- */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* --- Glow / neon (dari box-shadow Figma) --- */
+  --glow-neon: 0 0 12px rgba(0, 212, 255, 0.3);
+  --glow-neon-strong: 0 0 18px rgba(0, 212, 255, 0.7);
+  --glow-violet: 0 0 12px rgba(123, 92, 255, 0.3);
+  --glow-pink: 0 0 14px rgba(255, 60, 172, 0.3);
+  --glow-green: 0 0 6px rgba(25, 255, 176, 0.9);
+  --glow-panel: 0 0 16px rgba(0, 212, 255, 0.2);
+
+  /* --- Geometri shell (frame Figma 1440x900) --- */
+  --shell-sidebar-w: 232px;
+  --shell-topbar-h: 56px;
+  --shell-player-h: 64px;
+  --gap-panel: 12px;
+  --gap-main: 16px;
+
+  /* --- Alias shadow legacy --- */
+  --shadow-glow-cyan: var(--glow-neon);
+  --shadow-glow-violet: var(--glow-violet);
 }

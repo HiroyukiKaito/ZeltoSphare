@@ -19,7 +19,7 @@ export function Card({ title, subtitle, badge, children, className }: CardProps)
           {subtitle ? <p className="card-subtitle">{subtitle}</p> : null}
         </div>
         {badge ? <Badge variant={badge.variant}>{badge.label}</Badge> : null}
-      </header>
+      </header> 
       <div className="card-body">{children}</div>
     </section>
   );
