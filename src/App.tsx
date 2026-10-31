@@ -27,6 +27,17 @@ const PAGE_TARGET_PHASE: Record<Exclude<MenuId, "home">, string> = {
   settings: "9",
 };
 
+const PAGE_SUBTITLE: Record<MenuId, string> = {
+  home: "Ringkasan status aplikasi — data jujur, tanpa angka palsu",
+  "ai-chat": "Percakapan dengan satu provider AI (FASE 4)",
+  "ai-agent": "Otomasi bertahap dengan persetujuan user (FASE 8)",
+  "voice-waifu": "Kompanion suara push-to-talk (FASE 7)",
+  music: "Player audio lokal persisten (FASE 6)",
+  market: "Data market dengan sumber yang jelas (FASE 5)",
+  extensions: "Katalog ekstensi lokal (FASE 9)",
+  settings: "Preferensi, secret, dan keamanan (FASE 9)",
+};
+
 function App() {
   const [activeMenu, setActiveMenu] = useState<MenuId>("home");
 
@@ -40,7 +51,10 @@ function App() {
         footer={<VtuberDock status="idle" name="Aya" />}
       />
       <div className="shell-main">
-        <TopBar />
+        <TopBar
+          title={activeMenu === "home" ? "HOME" : PAGE_TITLE[activeMenu]}
+          subtitle={PAGE_SUBTITLE[activeMenu]}
+        />
         <main className="shell-content">
           {activeMenu === "home" ? (
             <HomePage onNavigate={setActiveMenu} />

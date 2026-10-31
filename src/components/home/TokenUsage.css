@@ -1,0 +1,110 @@
+.usage-panel {
+  background: rgba(10, 18, 38, 0.85);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-mute);
+  font-family: var(--font-body);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: var(--color-text);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.tab.active {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--color-neon);
+  border-color: rgba(0, 212, 255, 0.4);
+}
+
+.kpi-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.kpi {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-mute);
+  letter-spacing: 0.1em;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.kpi-value.input { color: var(--color-neon); }
+.kpi-value.output { color: var(--color-violet); }
+.kpi-value.requests { color: var(--color-text); }
+.kpi-value.cost { color: var(--color-green); }
+
+.chart-area {
+  position: relative;
+  height: 100px;
+  background: rgba(5, 7, 15, 0.4);
+  border-radius: 8px;
+  border: 1px solid var(--color-line);
+  margin-top: 4px;
+  padding: 8px;
+}
+
+.chart-line {
+  position: absolute;
+  bottom: 24px;
+  left: 8px;
+  right: 8px;
+  height: 60px;
+  opacity: 0.6;
+}
+
+.input-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.3) 50%, transparent 100%);
+  clip-path: polygon(0 100%, 10% 60%, 30% 70%, 50% 40%, 70% 60%, 90% 30%, 100% 50%, 100% 100%, 0 100%);
+}
+
+.output-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(123, 92, 255, 0.3) 50%, transparent 100%);
+  clip-path: polygon(0 100%, 15% 80%, 35% 90%, 55% 60%, 75% 80%, 95% 50%, 100% 70%, 100% 100%, 0 100%);
+  top: 10px;
+}
+
+.x-labels {
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-mute);
+}

@@ -1,52 +1,145 @@
-.home-grid {
+.home-page .home-mid-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-main);
 }
 
-.home-note {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.quick-nav {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.75rem;
-}
-
-.quick-nav-item {
+/* Override style panel agar sesuai Figma */
+.usage-panel, .system-monitor-panel {
+  background: rgba(10, 18, 38, 0.85);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  align-items: flex-start;
-  padding: 0.75rem 1rem;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
+  gap: 12px;
 }
 
-.quick-nav-item:hover {
-  border-color: var(--color-neon-cyan);
-  box-shadow: var(--shadow-glow-cyan);
-  transform: translateY(-1px);
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.quick-nav-label {
+.panel-header h3 {
   font-family: var(--font-display);
-  font-size: 0.8125rem;
-  letter-spacing: 1px;
-  color: var(--color-neon-cyan);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.quick-nav-desc {
+.panel-header h3::before {
+  content: "";
+  width: 3px;
+  height: 14px;
+  background: var(--color-neon);
+  box-shadow: 0 0 6px var(--color-neon);
+}
+
+/* KPI Styles */
+.kpi-row {
+  display: flex;
+  gap: 12px;
+}
+
+.kpi {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-mute);
+  letter-spacing: 0.1em;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.kpi-value.input { color: var(--color-neon); }
+.kpi-value.output { color: var(--color-violet); }
+.kpi-value.requests { color: var(--color-text); }
+.kpi-value.cost { color: var(--color-green); }
+
+/* Gauges Grid */
+.gauges-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.gauge-card {
+  background: rgba(5, 7, 15, 0.55);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.gauge-circle {
+  position: relative;
+  width: 92px;
+  height: 92px;
+}
+
+.gauge-circle svg {
+  width: 100%;
+  height: 100%;
+  color: var(--color-neon); /* Default cyan */
+}
+
+.gauge-card.cpu svg { color: var(--color-neon); }
+.gauge-card.gpu svg { color: var(--color-violet); }
+.gauge-card.ram svg { color: var(--color-blue); }
+.gauge-card.storage svg { color: var(--color-amber); }
+.gauge-card.temp svg { color: var(--color-pink); }
+.gauge-card.power svg { color: var(--color-green); }
+
+.gauge-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.gauge-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+}
+
+.gauge-sub {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
+  font-size: 10px;
+  color: var(--color-mute);
+}
+
+/* Chip merah NOT CONNECTED */
+.chip.red {
+  background: rgba(255, 77, 109, 0.16);
+  color: var(--color-red);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
 }
