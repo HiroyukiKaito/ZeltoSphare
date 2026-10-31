@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
+  height: var(--shell-topbar-h);
   padding: 0 1rem;
   background: var(--color-bg-panel);
   border-bottom: 1px solid var(--color-border);

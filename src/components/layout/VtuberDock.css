@@ -1,74 +1,174 @@
 .vtuber-dock {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0.875rem;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}
-
-.vtuber-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--color-status-green);
-  box-shadow: 0 0 10px rgba(25, 255, 176, 0.35);
-  flex-shrink: 0;
-}
-
-.vtuber-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.vtuber-avatar.status-listening {
-  border-color: var(--color-status-yellow);
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
-}
-.vtuber-avatar.status-speaking {
-  border-color: var(--color-neon-cyan);
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.45);
-}
-.vtuber-avatar.status-error {
-  border-color: var(--color-status-red);
-  box-shadow: 0 0 10px rgba(255, 56, 96, 0.45);
-}
-
-.vtuber-info {
-  display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(16, 28, 60, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  border-radius: 14px;
+  box-shadow: 0 0 16px 0 rgba(0, 212, 255, 0.25);
 }
 
-.vtuber-name {
+.vtuber-dock__avatar {
+  position: relative;
+  align-self: center;
+  width: 180px;
+  height: 120px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1a2a66 0%, #07102a 100%);
+  border-radius: 10px;
+}
+
+.vta { position: absolute; }
+.vta-glow { background: rgba(0, 212, 255, 0.35); border-radius: 50%; filter: blur(30px); }
+.vta-ear { background: #c9daff; clip-path: polygon(50% 0, 0 100%, 100% 100%); }
+.vta-ear--l { transform: rotate(12deg); }
+.vta-ear--r { transform: rotate(-12deg); }
+.vta-ear-in { background: #ff9acb; clip-path: polygon(50% 0, 0 100%, 100% 100%); }
+.vta-ear-in--l { transform: rotate(12deg); }
+.vta-ear-in--r { transform: rotate(-12deg); }
+.vta-hair-back { background: #afc4ff; border-radius: 50%; }
+.vta-body { background: #16264a; border-radius: 50%; }
+.vta-collar { background: rgba(0, 212, 255, 0.8); border-radius: 50%; }
+.vta-sidelock { background: #c9daff; border-radius: 50%; }
+.vta-face { background: #ffe6da; border-radius: 50%; }
+.vta-eye { background: #0b1b4a; border-radius: 50%; }
+.vta-iris { background: #00d4ff; border-radius: 50%; }
+.vta-shine { background: #ffffff; border-radius: 50%; }
+.vta-blush { background: rgba(255, 122, 168, 0.5); border-radius: 50%; }
+.vta-mouth { background: #ff7a9a; border-radius: 50%; }
+.vta-bangs { background: #d6e3ff; border-radius: 50%; }
+.vta-phone { background: var(--color-neon); border-radius: 50%; }
+
+.vtuber-dock__name-row {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vtuber-dock__name {
   font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  color: var(--color-text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
 }
 
-.vtuber-status {
+.vtuber-dock__chip {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: rgba(25, 255, 176, 0.15);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.5px;
-  color: var(--color-status-green);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-green);
 }
 
-.status-dot {
+.vtuber-dock__chip-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 6px currentColor;
+  background: var(--color-green);
+  box-shadow: 0 0 6px rgba(25, 255, 176, 0.9);
 }
 
-.vtuber-status.status-listening { color: var(--color-status-yellow); }
-.vtuber-status.status-speaking { color: var(--color-neon-cyan); }
-.vtuber-status.status-error { color: var(--color-status-red); }
+.vtuber-dock--listening .vtuber-dock__chip { background: rgba(255, 194, 75, 0.15); color: var(--color-amber); }
+.vtuber-dock--listening .vtuber-dock__chip-dot { background: var(--color-amber); box-shadow: 0 0 6px rgba(255, 194, 75, 0.9); }
+.vtuber-dock--speaking .vtuber-dock__chip { background: rgba(0, 212, 255, 0.15); color: var(--color-neon); }
+.vtuber-dock--speaking .vtuber-dock__chip-dot { background: var(--color-neon); box-shadow: 0 0 6px rgba(0, 212, 255, 0.9); }
+.vtuber-dock--error .vtuber-dock__chip { background: rgba(255, 77, 109, 0.15); color: var(--color-red); }
+.vtuber-dock--error .vtuber-dock__chip-dot { background: var(--color-red); box-shadow: 0 0 6px rgba(255, 77, 109, 0.9); }
+
+.vtuber-dock__transcript {
+  width: 180px;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-mute);
+}
+
+.vtuber-dock__waveform {
+  align-self: stretch;
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.vtuber-dock__waveform > span { width: 4px; border-radius: 2px; background: var(--color-neon); }
+.vtuber-dock__waveform > span:nth-child(1) { height: 6px; }
+.vtuber-dock__waveform > span:nth-child(2) { height: 12px; }
+.vtuber-dock__waveform > span:nth-child(3) { height: 20px; }
+.vtuber-dock__waveform > span:nth-child(4) { height: 10px; }
+.vtuber-dock__waveform > span:nth-child(5) { height: 16px; }
+.vtuber-dock__waveform > span:nth-child(6) { height: 24px; }
+.vtuber-dock__waveform > span:nth-child(7) { height: 14px; }
+.vtuber-dock__waveform > span:nth-child(8) { height: 8px; }
+.vtuber-dock__waveform > span:nth-child(9) { height: 18px; }
+.vtuber-dock__waveform > span:nth-child(10) { height: 22px; }
+.vtuber-dock__waveform > span:nth-child(11) { height: 12px; }
+.vtuber-dock__waveform > span:nth-child(12) { height: 6px; }
+.vtuber-dock__waveform > span:nth-child(13) { height: 16px; }
+.vtuber-dock__waveform > span:nth-child(14) { height: 10px; }
+.vtuber-dock__waveform > span:nth-child(15) { height: 20px; }
+.vtuber-dock__waveform > span:nth-child(16) { height: 8px; }
+.vtuber-dock__waveform > span:nth-child(17) { height: 14px; }
+.vtuber-dock__waveform > span:nth-child(18) { height: 6px; }
+.vtuber-dock__waveform > span:nth-child(1),
+.vtuber-dock__waveform > span:nth-child(4),
+.vtuber-dock__waveform > span:nth-child(7),
+.vtuber-dock__waveform > span:nth-child(10),
+.vtuber-dock__waveform > span:nth-child(13),
+.vtuber-dock__waveform > span:nth-child(16) { background: var(--color-violet); }
+
+.vtuber-dock__controls {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.vtuber-dock__btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  color: var(--color-mute);
+}
+
+.vtuber-dock__mic {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-neon);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 18px 0 rgba(0, 212, 255, 0.7);
+  color: var(--color-bg);
+}
+
+.vtuber-dock__btn:disabled,
+.vtuber-dock__mic:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.vtuber-dock__mic:disabled {
+  box-shadow: 0 0 8px 0 rgba(0, 212, 255, 0.35);
+}

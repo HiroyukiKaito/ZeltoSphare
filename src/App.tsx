@@ -31,11 +31,17 @@ function App() {
   const [activeMenu, setActiveMenu] = useState<MenuId>("home");
 
   return (
-    <div className="desktop-shell">
-      <TopBar />
-      <div className="shell-body">
-        <Sidebar activeMenu={activeMenu} onMenuClick={setActiveMenu} />
-        <main className="main-content">
+    <div className="shell-page">
+      <div className="shell-glow shell-glow--a" aria-hidden="true" />
+      <div className="shell-glow shell-glow--b" aria-hidden="true" />
+      <Sidebar
+        activeMenu={activeMenu}
+        onMenuClick={setActiveMenu}
+        footer={<VtuberDock status="idle" name="Aya" />}
+      />
+      <div className="shell-main">
+        <TopBar />
+        <main className="shell-content">
           {activeMenu === "home" ? (
             <HomePage onNavigate={setActiveMenu} />
           ) : (
@@ -45,9 +51,6 @@ function App() {
             />
           )}
         </main>
-      </div>
-      <div className="bottom-bar">
-        <VtuberDock />
         <NowPlayingBar />
       </div>
     </div>

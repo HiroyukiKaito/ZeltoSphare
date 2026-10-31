@@ -1,178 +1,197 @@
-.now-playing-bar {
-  flex: 1;
-  height: 72px;
+.now-playing {
+  flex-shrink: 0;
+  align-self: stretch;
+  height: var(--shell-player-h);
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
-  padding: 0 1rem;
-  min-width: 0;
+  gap: 24px;
+  padding: 10px 16px;
+  background: var(--color-panel);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 0 16px 0 rgba(0, 212, 255, 0.2);
 }
 
-/* --- Kiri: info track --- */
-.track-info {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 0 1 280px;
-  min-width: 0;
-}
-
-.track-artwork {
+.now-playing__cover {
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  flex-shrink: 0;
+  background: linear-gradient(90deg, #7b5cff 0%, #00d4ff 100%);
+  border-radius: 8px;
 }
 
-.track-details {
+.now-playing__track-meta {
+  flex-shrink: 0;
+  width: 230px;
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
-  min-width: 0;
+  gap: 2px;
 }
 
-.track-title {
+.now-playing__title {
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.track-artist {
+.now-playing__artist {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
+  font-size: 11px;
+  color: var(--color-mute);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.demo-badge {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 1px;
-  color: var(--color-status-yellow);
-  border: 1px solid var(--color-status-yellow);
-  border-radius: var(--radius-sm);
-  padding: 2px 6px;
+.now-playing__demo {
   flex-shrink: 0;
-}
-
-/* --- Tengah: progress bar (demo, belum aktif) --- */
-.progress-section {
-  flex: 1 1 240px;
-  max-width: 640px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0.55;
-}
-
-.progress-time {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: var(--color-text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber);
+  border-radius: 6px;
+  padding: 2px 6px;
 }
 
-.progress-bar {
-  flex: 1;
-  height: 4px;
-  background: var(--color-bg-elevated);
-  border-radius: 2px;
-  position: relative;
-}
-
-.progress-level {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: var(--color-neon-cyan);
-  border-radius: 2px;
-}
-
-/* --- Kontrol player --- */
-.player-controls {
+.now-playing__transport {
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  flex: 0 0 auto;
+  gap: 4px;
 }
 
-.control-btn {
+.now-playing__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.now-playing__btn {
   background: transparent;
   border: none;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  padding: 0.5rem;
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
-  border-radius: var(--radius-sm);
+  padding: 0;
 }
 
-.control-btn:hover:not(:disabled) {
-  color: var(--color-text-primary);
-  background: var(--color-bg-elevated);
+.now-playing__play {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-neon);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 0 12px 0 rgba(0, 212, 255, 0.6);
+  color: var(--color-bg);
 }
 
-.play-btn {
-  width: 36px;
-  height: 36px;
-  background: var(--color-neon-cyan);
-  color: var(--color-bg-base);
-  border-radius: 50%;
-}
-
-.play-btn:hover:not(:disabled) {
-  background: var(--color-neon-violet);
-  color: #fff;
-  transform: scale(1.05);
-}
-
-.control-btn:disabled {
-  opacity: 0.4;
+.now-playing__btn:disabled,
+.now-playing__play:disabled {
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
-.play-btn:disabled,
-.play-btn:disabled:hover {
-  background: var(--color-bg-elevated);
-  color: var(--color-text-muted);
-  transform: none;
-  box-shadow: none;
+.now-playing__play:disabled {
+  box-shadow: 0 0 6px 0 rgba(0, 212, 255, 0.25);
 }
 
-/* --- Kanan: volume --- */
-.volume-control {
-  margin-left: auto;
+.now-playing__progress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.now-playing__time {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-mute);
+}
+
+.now-playing__bar {
+  width: 380px;
+  max-width: 40vw;
+  height: 4px;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-line);
+  border-radius: 2px;
+}
+
+.now-playing__bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 4px;
+  background: var(--color-neon);
+  border-radius: 2px;
+  box-shadow: 0 0 6px 0 rgba(0, 212, 255, 0.9);
+}
+
+.now-playing__volume {
+  flex-shrink: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+}
+
+.now-playing__vol-bar {
+  width: 90px;
+  height: 4px;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-line);
+  border-radius: 2px;
+}
+
+.now-playing__vol-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 4px;
+  background: var(--color-violet);
+  border-radius: 2px;
+}
+
+.now-playing__vol-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.now-playing__source-chip {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  flex: 0 1 160px;
-  justify-content: flex-end;
-  color: var(--color-text-secondary);
+  gap: 6px;
+  padding: 5px 10px;
+  background: rgba(255, 77, 109, 0.14);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-red);
 }
 
-.volume-slider {
-  width: 100px;
-  height: 4px;
-  background: var(--color-bg-elevated);
-  border-radius: 2px;
-  position: relative;
-}
-
-.volume-level {
-  height: 100%;
-  background: var(--color-neon-cyan);
-  border-radius: 2px;
-  position: absolute;
-  top: 0;
-  left: 0;
+.now-playing__source-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-red);
+  box-shadow: 0 0 6px rgba(255, 77, 109, 0.9);
 }

@@ -1,32 +1,59 @@
-/* ============================================================
-   LAYOUT DESKTOP SHELL (TopBar + Sidebar + Main Content)
-   ============================================================ */
-.desktop-shell {
+.shell-page {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  background: var(--color-bg);
 }
 
-.shell-body {
+.shell-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shell-glow--a {
+  left: 62%;
+  top: -22%;
+  width: 560px;
+  height: 560px;
+  background: rgba(46, 123, 255, 0.28);
+  filter: blur(220px);
+}
+
+.shell-glow--b {
+  left: 17%;
+  top: 58%;
+  width: 520px;
+  height: 520px;
+  background: rgba(123, 92, 255, 0.22);
+  filter: blur(220px);
+}
+
+.shell-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  margin: 20px 24px;
   display: flex;
-  flex: 1;
-  overflow: hidden;
+  flex-direction: column;
+  gap: var(--gap-main);
 }
 
-.main-content {
+.shell-content {
   flex: 1;
+  min-height: 0;
   overflow: auto;
 }
 
 .page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 12px;
 }
 
 .page-header {
