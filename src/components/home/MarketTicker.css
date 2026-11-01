@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: var(--gap-main);
-  margin-bottom: var(--gap-main);
 }
 
 .ticker-card {
@@ -13,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  height: 100px; box-sizing: border-box;
 }
 
 .ticker-header {
