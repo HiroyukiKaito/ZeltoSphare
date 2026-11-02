@@ -32,3 +32,47 @@
   border-color: var(--color-border);
   background: var(--color-bg-elevated);
 }
+
+/* src/components/ui/Badge.css */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+}
+
+/* Variant Neutral (Default/Checking) */
+.badge--neutral {
+  background-color: rgba(139, 155, 180, 0.1);
+  color: #8b9bb4;
+  border-color: rgba(139, 155, 180, 0.3);
+}
+
+/* Variant OK (Connected - Hijau Neon) */
+.badge--ok {
+  background-color: rgba(57, 255, 133, 0.1); /* #39ff85 dengan opacity */
+  color: #39ff85;
+  border-color: rgba(57, 255, 133, 0.4);
+  box-shadow: 0 0 8px rgba(57, 255, 133, 0.2);
+}
+
+/* Variant Error (Not Connected - Merah Neon) */
+.badge--error {
+  background-color: rgba(255, 77, 109, 0.1); /* #ff4d6d dengan opacity */
+  color: #ff4d6d;
+  border-color: rgba(255, 77, 109, 0.4);
+  box-shadow: 0 0 8px rgba(255, 77, 109, 0.2);
+}
+
+/* Variant Demo (Data Dummy - Kuning/Amber) */
+.badge--demo {
+  background-color: rgba(255, 204, 0, 0.1);
+  color: #ffcc00;
+  border-color: rgba(255, 204, 0, 0.4);
+}

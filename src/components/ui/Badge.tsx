@@ -1,19 +1,22 @@
 import "./Badge.css";
 
-export type BadgeVariant = "demo" | "ok" | "error" | "neutral";
+export type BadgeVariant = "neutral" | "ok" | "error" | "demo" | "info"; 
 
 interface BadgeProps {
   variant: BadgeVariant;
   children: string;
 }
 
-const VARIANT_CLASS: Record<BadgeVariant, string> = {
-  demo: "badge-demo",
-  ok: "badge-ok",
-  error: "badge-error",
-  neutral: "badge-neutral",
-};
-
 export function Badge({ variant, children }: BadgeProps) {
-  return <span className={`badge ${VARIANT_CLASS[variant]}`}>{children}</span>;
+
+
+const variantClass = {
+    neutral: "badge--neutral",
+    ok: "badge--ok",       // Untuk "Connected" (Hijau)
+    error: "badge--error", // Untuk "Not Connected" (Merah)
+    demo: "badge--demo",   // Untuk data dummy (Kuning/Amber)
+    info: "badge--info",   // Untuk info umum (Biru/Cyan)
+  }[variant];
+
+  return <span className={`badge ${variantClass}`}>{children}</span>;
 }
