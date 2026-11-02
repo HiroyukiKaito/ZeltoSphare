@@ -5,24 +5,24 @@ const TABS = ["AI Chat", "AI Agent", "Voice Waifu"];
 
 export function TokenUsage() {
   const [activeTab, setActiveTab] = useState(0);
-
   return (
     <div className="usage-panel">
       <div className="panel-header">
-        <h3>TOKEN USAGE</h3>
+        <h3>
+          TOKEN USAGE
+          <span className="usage-demo-chip">DEMO</span>
+        </h3>
         <div className="tabs">
           {TABS.map((tab, i) => (
             <button
               key={tab}
               className={`tab ${i === activeTab ? "active" : ""}`}
-              onClick={() => setActiveTab(i)}
-            >
+              onClick={() => setActiveTab(i)}>
               {tab}
             </button>
           ))}
         </div>
       </div>
-
       <div className="kpi-row">
         <div className="kpi">
           <span className="kpi-label">INPUT</span>
@@ -41,7 +41,6 @@ export function TokenUsage() {
           <span className="kpi-value cost">$2.31</span>
         </div>
       </div>
-
       <div className="chart-area">
         <div className="chart-line input-line"></div>
         <div className="chart-line output-line"></div>
