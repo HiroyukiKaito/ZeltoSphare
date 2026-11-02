@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Python service
+python-service/.venv/
+python-service/data/
+python-service/__pycache__/
+**/__pycache__/
+*.pyc
