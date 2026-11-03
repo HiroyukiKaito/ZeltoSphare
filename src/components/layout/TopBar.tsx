@@ -5,12 +5,22 @@ import "./TopBar.css";
 interface TopBarProps {
   title: string;
   subtitle: string;
+  serviceStatus?: "connected" | "disconnected" | "checking"; // <-- TAMBAHKAN INI
 }
 
 const NOT_ACTIVE = "Belum aktif — akan tersedia pada fase berikutnya";
 
-export function TopBar({ title, subtitle }: TopBarProps) {
+export function TopBar({ title, subtitle, serviceStatus = "checking" }: TopBarProps) {
   const appWindow = getCurrentWindow();
+
+  // Tentukan warna dan tooltip berdasarkan status
+  const indicatorColor = 
+    serviceStatus === "connected" ? "var(--color-green)" : 
+    serviceStatus === "disconnected" ? "var(--color-red)" : "var(--color-mute)";
+  
+  const indicatorTooltip = 
+    serviceStatus === "connected" ? "Python Service: Online" : 
+    serviceStatus === "disconnected" ? "Python Service: Offline" : "Python Service: Checking...";
 
   return (
     <header className="top-bar" data-tauri-drag-region>
@@ -20,6 +30,16 @@ export function TopBar({ title, subtitle }: TopBarProps) {
       </div>
 
       <div className="top-bar__right">
+        {/* INDIKATOR STATUS SERVICE (Titik Neon) */}
+        <div 
+          className="top-bar__service-indicator"
+          title={indicatorTooltip}
+          style={{ 
+            backgroundColor: indicatorColor,
+            boxShadow: `0 0 8px ${indicatorColor}`
+          }}
+        />
+
         <label className="top-bar__search">
           <Search size={16} strokeWidth={1.35} />
           <input type="text" placeholder="Cari modul, perintah, track..." disabled title={NOT_ACTIVE} />

@@ -171,3 +171,12 @@
   border-color: var(--color-red);
   color: var(--color-red);
 }
+
+.top-bar__service-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  cursor: help;
+}

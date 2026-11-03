@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 import { TopBar } from "./components/layout/TopBar";
 import { Sidebar, type MenuId } from "./components/layout/Sidebar";
 import { NowPlayingBar } from "./components/layout/NowPlayingBar";
@@ -40,24 +41,53 @@ const PAGE_SUBTITLE: Record<MenuId, string> = {
 
 function App() {
   const [activeMenu, setActiveMenu] = useState<MenuId>("home");
+  
+  // 🆕 State untuk status Python Service (shared antara TopBar dan HomePage)
+  const [serviceStatus, setServiceStatus] = useState<"connected" | "disconnected" | "checking">("checking");
+
+  // 🆕 Logika polling health check setiap 30 detik
+  useEffect(() => {
+    const checkPythonHealth = async () => {
+      try {
+        // Memanggil perintah Rust 'python_health'
+        await invoke("python_health");
+        setServiceStatus("connected");
+      } catch (error) {
+        // Jika error, berarti service mati atau belum jalan
+        setServiceStatus("disconnected");
+      }
+    };
+
+    checkPythonHealth();
+    const interval = setInterval(checkPythonHealth, 30000);
+    
+    // Cleanup interval saat komponen unmount
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="shell-page">
       <div className="shell-glow shell-glow--a" aria-hidden="true" />
       <div className="shell-glow shell-glow--b" aria-hidden="true" />
+      
       <Sidebar
         activeMenu={activeMenu}
         onMenuClick={setActiveMenu}
         footer={<VtuberDock status="idle" name="Aya" />}
       />
+      
       <div className="shell-main">
+        {/* 🆕 Teruskan serviceStatus ke TopBar untuk Indikator Titik Neon */}
         <TopBar
           title={activeMenu === "home" ? "HOME" : PAGE_TITLE[activeMenu]}
           subtitle={PAGE_SUBTITLE[activeMenu]}
+          serviceStatus={serviceStatus} 
         />
+        
         <main className="shell-content">
           {activeMenu === "home" ? (
-            <HomePage onNavigate={setActiveMenu} />
+            // 🆕 Teruskan serviceStatus ke HomePage untuk Mini Chat
+            <HomePage onNavigate={setActiveMenu} serviceStatus={serviceStatus} />
           ) : (
             <PlaceholderPage
               title={PAGE_TITLE[activeMenu]}
@@ -65,6 +95,7 @@ function App() {
             />
           )}
         </main>
+        
         <NowPlayingBar />
       </div>
     </div>
